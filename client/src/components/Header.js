@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 
-function Header() {
+function Header({ activePage, setActivePage }) {
   const [tooltip, setTooltip] = useState('');
+
+  const navItems = [
+    { key: 'dashboard', label: 'Dashboard', tip: 'View churn risk overview and key metrics' },
+    { key: 'insights', label: 'AI Insights', tip: 'Ask questions about your customer data' },
+    { key: 'retention', label: 'Retention', tip: 'View and act on high risk customers' },
+  ];
 
   return (
     <header className="header">
@@ -11,36 +17,20 @@ function Header() {
           <span className="logo-text">agenta Intelligence</span>
         </div>
         <div className="header-nav">
-          <div
-            className="nav-item"
-            onMouseEnter={() => setTooltip('dashboard')}
-            onMouseLeave={() => setTooltip('')}
-          >
-            Dashboard
-            {tooltip === 'dashboard' && (
-              <div className="tooltip">View churn risk overview and key metrics</div>
-            )}
-          </div>
-          <div
-            className="nav-item"
-            onMouseEnter={() => setTooltip('insights')}
-            onMouseLeave={() => setTooltip('')}
-          >
-            AI Insights
-            {tooltip === 'insights' && (
-              <div className="tooltip">Ask questions about your customer data</div>
-            )}
-          </div>
-          <div
-            className="nav-item"
-            onMouseEnter={() => setTooltip('retention')}
-            onMouseLeave={() => setTooltip('')}
-          >
-            Retention
-            {tooltip === 'retention' && (
-              <div className="tooltip">View AI-generated retention recommendations</div>
-            )}
-          </div>
+          {navItems.map(item => (
+            <div
+              key={item.key}
+              className={`nav-item ${activePage === item.key ? 'nav-active' : ''}`}
+              onClick={() => setActivePage(item.key)}
+              onMouseEnter={() => setTooltip(item.key)}
+              onMouseLeave={() => setTooltip('')}
+            >
+              {item.label}
+              {tooltip === item.key && (
+                <div className="tooltip">{item.tip}</div>
+              )}
+            </div>
+          ))}
         </div>
         <div className="header-badge">Internal Tool</div>
       </div>
