@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import './App.css';
 import mockData from './mockData';
+import { scoreAllCustomers } from './churnScore';
 import Header from './components/Header';
 import Dashboard from './components/Dashboard';
 import QueryBox from './components/QueryBox';
@@ -10,9 +11,11 @@ function App() {
 
   const regions = ['All', 'Northwest', 'Midwest', 'Southeast', 'Southwest'];
 
+  const scoredData = useMemo(() => scoreAllCustomers(mockData), []);
+
   const filteredData = region === 'All'
-    ? mockData
-    : mockData.filter(c => c.region === region);
+    ? scoredData
+    : scoredData.filter(c => c.region === region);
 
   return (
     <div className="app">
@@ -20,8 +23,8 @@ function App() {
       <main className="main-content">
         <div className="page-title">
           <h2>Churn Risk Overview</h2>
-        <p>Analyzing {filteredData.length} customers — select a region to filter</p>
-</div>
+          <p>Analyzing {filteredData.length} customers — select a region to filter</p>
+        </div>
         <div className="region-filter">
           {regions.map(r => (
             <button

@@ -170,8 +170,8 @@ body {
   color: #E20074;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(226,0,116,0.15);
+  background: white;
 }
-
 .filter-btn.active {
   background: #E20074;
   border-color: #E20074;
@@ -389,4 +389,41 @@ body {
   line-height: 1.7;
   font-weight: 400;
   animation: fadeIn 0.2s ease;
+}
+/* AVG SCORE BAR */
+.avg-score-bar {
+  background: white;
+  border-radius: 16px;
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.avg-score-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1A1A1A;
+}
+
+.avg-score-number {
+  font-size: 18px;
+  font-weight: 800;
+  color: #E20074;
+}
+
+.progress-bar {
+  height: 10px;
+  background: #F4F4F4;
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 100px;
+  transition: width 0.8s ease;
 }
