@@ -57,22 +57,14 @@ Answer the following question clearly and concisely in 2-3 sentences. Use specif
 Question: ${questionToAsk}`;
 
     try {
-      const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+      const response = await fetch('https://tmobile-churn-dashboard.onrender.com/api/query', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${process.env.REACT_APP_GROQ_API_KEY}`
-        },
-        body: JSON.stringify({
-          model: 'llama-3.3-70b-versatile',
-          messages: [{ role: 'user', content: dataContext }],
-          max_tokens: 150,
-          temperature: 0.2,
-        })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt: dataContext })
       });
 
       const result = await response.json();
-      const ans = result.choices[0].message.content.trim();
+      const ans = result.answer;
 
       setAnswer(ans);
       setHistory(prev => [{ question: questionToAsk, answer: ans }, ...prev].slice(0, 5));
