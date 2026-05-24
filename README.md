@@ -14,8 +14,11 @@ Built as a portfolio project to demonstrate full stack development, data science
 
 ## Screenshots
 
-### Dashboard — Churn Risk Overview
-![Dashboard](screenshots/dashboard.png)
+### Dashboard — Churn Risk Overview (Top)
+![Dashboard Top](screenshots/dashboard-top.png)
+
+### Dashboard — Charts & Visualizations
+![Dashboard Bottom](screenshots/dashboard-bottom.png)
 
 ### Retention — Customer Action Cards
 ![Retention](screenshots/retention.png)
