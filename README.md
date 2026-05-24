@@ -8,7 +8,7 @@ Built as a portfolio project to demonstrate full stack development, data science
 
 ## Live Demo
 
-🔗 [Live Demo](#) ← will be updated after deployment
+🔗 [Live Demo](https://tmobile-churn-dashboard.vercel.app)
 
 ---
 
